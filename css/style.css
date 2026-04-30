@@ -1,0 +1,775 @@
+/* ============================================
+   STYLE.CSS — Portfolio Daniel Sande Bona
+   ============================================
+   File CSS eksternal untuk portfolio DKV.
+   Tema: Dark modern minimalis
+   Warna: #0F172A (bg), #1E293B (card), #14B8A6 (aksen teal)
+   Font: Poppins (heading), Inter (body)
+   ============================================ */
+
+
+/* ============================================
+   1. RESET & VARIABEL DASAR
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #877a67;        /* Background utama */
+    --bg-card: #dcaf3e;        /* Background card */
+    --accent: #b01c30;         /* Aksen teal */
+    --accent-dark: #7f111f;    /* Teal lebih gelap untuk hover */
+    --text-main: #F1F5F9;      /* Teks utama */
+    --text-muted: #eedcaf;     /* Teks sekunder */
+    --border: #eedcaf;         /* Warna border halus */
+    --radius: 12px;            /* Border radius standar */
+    --transition: 0.3s ease;   /* Transisi default */
+}
+
+html {
+    scroll-behavior: smooth;   /* Smooth scrolling native */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+section {
+    padding: 100px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.accent {
+    color: var(--accent);
+}
+
+
+/* ============================================
+   2. NAVBAR: Transparan -> Solid saat scroll
+   ============================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px 0;
+    background: transparent;
+    transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
+}
+
+.navbar.scrolled {
+    background: rgb(225, 193, 117);
+    backdrop-filter: blur(10px);
+    padding: 14px 0;
+    box-shadow: 0 4px 20px rgba(238, 234, 216, 0.53);
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+
+/* ============================================
+   3. HERO SECTION: Nama besar, tagline, foto profil
+   ============================================ */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efek blob dekoratif di background hero */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(238, 221, 94, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text h1 {
+    font-size: 4rem;
+    margin-bottom: 16px;
+}
+
+.hero-text .tagline {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+.hero-text p {
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    font-size: 1.1rem;
+}
+
+/* Tombol CTA dengan efek hover */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--accent);
+    color: var(--bg-dark);
+    text-decoration: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background: var(--accent-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 253, 252, 0.818);
+}
+
+/* Foto profil sebagai gradient circle placeholder */
+.profile-placeholder {
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #14B8A6 0%, #0EA5E9 50%, #8B5CF6 100%);
+    position: relative;
+    box-shadow: 0 20px 60px rgba(238, 242, 241, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 5rem;
+    font-weight: 800;
+    color: var(--bg-dark);
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Animasi floating untuk foto profil */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+
+/* ============================================
+   4. ABOUT SECTION: Bio + Skill Bar
+   ============================================ */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+/* Skill bar container */
+.skills {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.skill-item {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: var(--radius);
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.skill-name {
+    font-weight: 600;
+}
+
+.skill-percent {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.skill-bar {
+    height: 8px;
+    background: var(--bg-dark);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Fill bar dimulai dari width 0, diisi via JS saat elemen terlihat */
+.skill-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent) 0%, #f0d77b 100%);
+    border-radius: 4px;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ============================================
+   5. PORTFOLIO SECTION: Filter & Grid Karya
+   ============================================ */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    transition: all var(--transition);
+}
+
+.filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.filter-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg-dark);
+}
+
+/* Grid portfolio responsif */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.portfolio-item {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition), opacity 0.4s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Kelas untuk animasi filter (hilang/muncul) */
+.portfolio-item.hide {
+    display: none;
+}
+
+/* Container pembungkus thumbnail */
+.portfolio-thumb-wrapper {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Styling untuk tag <img> di dalam wrapper */
+.portfolio-thumb-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;          /* Gambar terpotong proporsional */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Fallback placeholder jika gambar belum ada */
+.portfolio-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+    transition: transform 0.5s ease;
+}
+
+/* Zoom effect saat hover — berlaku untuk img dan placeholder */
+.portfolio-item:hover .portfolio-thumb-wrapper img,
+.portfolio-item:hover .portfolio-placeholder {
+    transform: scale(1.08);
+}
+
+/* Variasi gradient untuk placeholder / background */
+.thumb-1 { background: linear-gradient(135deg, #14B8A6 0%, #0EA5E9 100%); }
+.thumb-2 { background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%); }
+.thumb-3 { background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%); }
+.thumb-4 { background: linear-gradient(135deg, #10B981 0%, #14B8A6 100%); }
+.thumb-5 { background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%); }
+.thumb-6 { background: linear-gradient(135deg, #EC4899 0%, #F59E0B 100%); }
+
+.portfolio-info {
+    padding: 20px;
+}
+
+.portfolio-category {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(20, 184, 166, 0.1);
+    color: var(--accent);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.portfolio-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+
+.portfolio-info p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+
+/* ============================================
+   6. LIGHTBOX: Popup detail karya
+   ============================================ */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(246, 199, 118, 0.392);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    max-width: 700px;
+    width: 100%;
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform var(--transition);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.lightbox.active .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-image {
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.lightbox-body {
+    padding: 32px;
+}
+
+.lightbox-body h3 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.lightbox-body p {
+    color: var(--text-muted);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: none;
+    color: var(--text-main);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transition);
+}
+
+.lightbox-close:hover {
+    background: var(--accent);
+    color: var(--bg-dark);
+}
+
+
+/* ============================================
+   7. CONTACT SECTION: Form & Sosial Media
+   ============================================ */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.contact-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.contact-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.764);
+    color: var(--accent);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.social-links a {
+    width: 44px;
+    height: 44px;
+    background: var(--bg-card);
+    color: var(--text-main);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all var(--transition);
+    font-weight: 600;
+}
+
+.social-links a:hover {
+    background: var(--accent);
+    color: var(--bg-dark);
+    transform: translateY(-3px);
+}
+
+/* Form kontak */
+.contact-form {
+    background: var(--bg-card);
+    padding: 32px;
+    border-radius: var(--radius);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: border-color var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Status validasi: error & success */
+.form-group.error input,
+.form-group.error textarea {
+    border-color: #EF4444;
+}
+
+.error-message {
+    color: #EF4444;
+    font-size: 0.85rem;
+    margin-top: 6px;
+    display: none;
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
+.form-status {
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: var(--radius);
+    text-align: center;
+    display: none;
+}
+
+.form-status.success {
+    display: block;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10B981;
+    border: 1px solid #10B981;
+}
+
+
+/* ============================================
+   8. FOOTER & SCROLL-TO-TOP
+   ============================================ */
+footer {
+    background: var(--bg-card);
+    padding: 40px 0;
+    text-align: center;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg-dark);
+    border: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: 700;
+    box-shadow: 0 5px 20px rgba(235, 201, 114, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all var(--transition);
+    z-index: 999;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-top:hover {
+    background: var(--accent-dark);
+    transform: translateY(-3px);
+}
+
+
+/* ============================================
+   9. ANIMASI FADE-IN SAAT SCROLL
+   ============================================ */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ============================================
+   10. MEDIA QUERY: Responsif untuk Mobile & Tablet
+   ============================================ */
+
+/* Tablet & layar kecil */
+@media (max-width: 900px) {
+    .hero-content,
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero-text h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-text .tagline {
+        font-size: 1.2rem;
+    }
+
+    .profile-placeholder {
+        width: 240px;
+        height: 240px;
+        font-size: 4rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    section {
+        padding: 70px 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .nav-links {
+        display: none;    /* Sederhanakan navbar di mobile */
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .profile-placeholder {
+        width: 200px;
+        height: 200px;
+        font-size: 3.5rem;
+    }
+
+    .contact-form {
+        padding: 24px;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
